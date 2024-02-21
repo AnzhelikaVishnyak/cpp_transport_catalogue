@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto_transport_db;
+
+import "graph.proto";
+
+message StopNameToId {
+    string stop_name = 1;
+    int32 stop_id = 2;
+}
+
+message EdgeInfo {
+    string type = 1;
+    string name = 2;
+    int32 span_count = 3;
+}
+
+message EdgeIdToInfo {
+    int32 edge_id = 1;
+    EdgeInfo edge_info = 2;
+}
+
+message Router {
+    int32 bus_wait_time = 1;
+    double bus_velocity = 2;
+    proto_graph.Graph graph = 3;
+    repeated StopNameToId stopname_to_id = 4;
+    repeated EdgeIdToInfo edge_id_to_info = 5;
+}
